@@ -1,8 +1,7 @@
 //2
 let todoArray = ["takaritas", "kutyaseta", "vaccsora", "zuhanyzas", "programozni", "felkelni", "tvzni", "lefekudni", "kocsimosas"]
 let ulEl = document.createElement("Ul")
-document.body.prepend(ulEl)*/
-
+document.body.prepend(ulEl)
 
 
 todoArray.forEach(listItem => {
@@ -28,7 +27,9 @@ elBtn.addEventListener("click", function () {
         let newText = window.prompt("Add a new Todo to your List")
         let newLi = document.createElement("li")
         newLi.textContent = newText
-        ulEl.prepend(newLi)
+        if (newText != null) {
+            ulEl.prepend(newLi)
+        }
     }
 )
 
@@ -41,11 +42,13 @@ ulEl.addEventListener("click", event => {
 })
 
 //6
-
+let baUl = document.getElementById("backup")
 
 ulEl.addEventListener("click", event => {
     if (event.shiftKey) {
-
+        let list = document.createElement("li")
+        list.textContent = event.target.textContent
+        baUl.prepend(list)
         event.target.remove()
     }
 })
